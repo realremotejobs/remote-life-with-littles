@@ -1,523 +1,444 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Remote Life With Littles</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remote Life With Littles</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #F5F7FA;
-      color: #2D2D2D;
-    }
+*{box-sizing:border-box;}
 
-    header {
-      background: #4A6FA5;
-      color: white;
-      text-align: center;
-      padding: 45px 20px;
-    }
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#F5F7FA;
+color:#2D2D2D;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 34px;
-    }
+header{
+background:#4A6FA5;
+color:white;
+text-align:center;
+padding:45px 20px;
+}
 
-    header p {
-      margin: 12px 0 0;
-      color: #eef3f9;
-    }
+header h1{
+margin:0;
+font-size:34px;
+}
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 40px 20px;
-    }
+header p{
+margin:12px 0 0;
+color:#eef3f9;
+}
 
-    .section-title {
-      text-align: center;
-      font-size: 30px;
-      margin: 0 0 25px;
-    }
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
 
-    .group-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
+.section-title{
+text-align:center;
+font-size:30px;
+margin-bottom:30px;
+}
 
-    .job-group {
-      background: white;
-      border-radius: 16px;
-      border: 1px solid #e7edf5;
-      box-shadow: 0 6px 18px rgba(74, 111, 165, 0.10);
-      padding: 26px;
-    }
+.group-grid{
+display:grid;
+grid-template-columns:1fr;
+gap:24px;
+}
 
-    .job-group h3 {
-      margin: 0 0 8px;
-      font-size: 28px;
-      text-align: center;
-      color: #2D2D2D;
-    }
+.job-group{
+background:white;
+border-radius:16px;
+border:1px solid #e7edf5;
+box-shadow:0 6px 18px rgba(74,111,165,0.10);
+padding:26px;
+}
 
-    .group-type {
-      text-align: center;
-      color: #5b6675;
-      margin-bottom: 18px;
-      font-size: 15px;
-    }
+.job-group h3{
+margin:0 0 6px;
+font-size:26px;
+text-align:center;
+}
 
-    .mini-section-title {
-      font-size: 14px;
-      font-weight: bold;
-      color: #4A6FA5;
-      margin: 20px 0 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
+.group-type{
+text-align:center;
+color:#5b6675;
+margin-bottom:18px;
+}
 
-    .listing-list {
-      display: grid;
-      gap: 12px;
-    }
+.older-toggle{
+width:100%;
+background:#eef3f9;
+color:#4A6FA5;
+border:1px solid #d7e2ef;
+border-radius:10px;
+padding:12px;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+}
 
-    .listing-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      background: #f8fbff;
-      border: 1px solid #e2ebf5;
-      border-radius: 12px;
-      padding: 14px 16px;
-    }
+.listing-list{
+display:grid;
+gap:12px;
+margin-top:10px;
+}
 
-    .listing-left {
-      text-align: left;
-      flex: 1;
-    }
+.listing-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#f8fbff;
+border:1px solid #e2ebf5;
+border-radius:12px;
+padding:14px;
+}
 
-    .company-name {
-      font-weight: bold;
-      color: #2D2D2D;
-      margin-bottom: 4px;
-    }
+.company-name{
+font-weight:bold;
+}
 
-    .listing-meta {
-      font-size: 14px;
-      color: #6b7280;
-      line-height: 1.5;
-    }
+.listing-meta{
+font-size:14px;
+color:#6b7280;
+}
 
-    .tag {
-      display: inline-block;
-      padding: 5px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: bold;
-      margin-right: 8px;
-      margin-bottom: 6px;
-    }
+.tag{
+display:inline-block;
+padding:4px 8px;
+border-radius:999px;
+font-size:12px;
+font-weight:bold;
+margin-bottom:6px;
+}
 
-    .tag-today {
-      background: #7FB069;
-      color: white;
-    }
+.tag-today{
+background:#7FB069;
+color:white;
+}
 
-    .tag-open {
-      background: #e8eef8;
-      color: #4A6FA5;
-    }
+.tag-open{
+background:#e8eef8;
+color:#4A6FA5;
+}
 
-    .apply-btn {
-      display: inline-block;
-      background: #4A6FA5;
-      color: white;
-      text-decoration: none;
-      padding: 10px 18px;
-      border-radius: 8px;
-      font-weight: bold;
-      white-space: nowrap;
-    }
+.apply-btn{
+background:#4A6FA5;
+color:white;
+text-decoration:none;
+padding:10px 16px;
+border-radius:8px;
+font-weight:bold;
+}
 
-    .apply-btn:hover {
-      background: #3f6294;
-    }
+.older-listings{
+display:none;
+}
 
-    .older-toggle {
-      width: 100%;
-      background: #eef3f9;
-      color: #4A6FA5;
-      border: 1px solid #d7e2ef;
-      border-radius: 10px;
-      padding: 12px 14px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 10px;
-      font-size: 14px;
-    }
+.older-listings.show{
+display:block;
+}
 
-    .older-toggle:hover {
-      background: #e6edf7;
-    }
+.templates{
+display:grid;
+grid-template-columns:1fr;
+gap:25px;
+margin-top:40px;
+}
 
-    .older-listings {
-      display: none;
-      margin-top: 12px;
-    }
+.template{
+background:white;
+padding:25px;
+border-radius:14px;
+border:1px solid #e7edf5;
+box-shadow:0 6px 18px rgba(74,111,165,0.10);
+text-align:center;
+}
 
-    .older-listings.show {
-      display: block;
-    }
+.download{
+background:#7FB069;
+color:white;
+padding:10px 18px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+display:inline-block;
+margin-top:10px;
+}
 
-    .templates {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 25px;
-      margin-top: 30px;
-    }
+.buy{
+background:#4A6FA5;
+color:white;
+padding:10px 18px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+display:inline-block;
+margin-top:10px;
+}
 
-    .template {
-      background: white;
-      padding: 25px;
-      border-radius: 14px;
-      border: 1px solid #e7edf5;
-      box-shadow: 0 6px 18px rgba(74,111,165,0.10);
-      text-align: center;
-    }
+.payment-note{
+font-size:13px;
+color:#6b7280;
+margin-top:10px;
+}
 
-    .download {
-      background: #7FB069;
-      color: white;
-      padding: 10px 18px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
-      margin-top: 10px;
-    }
+footer{
+text-align:center;
+padding:25px;
+margin-top:40px;
+color:#6b7280;
+border-top:1px solid #dbe3ec;
+}
 
-    .buy {
-      background: #4A6FA5;
-      color: white;
-      padding: 10px 18px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
-      margin-top: 10px;
-    }
+@media (min-width:850px){
+.group-grid{grid-template-columns:1fr 1fr;}
+.templates{grid-template-columns:1fr 1fr;}
+}
 
-    .payment-note {
-      font-size: 13px;
-      color: #6b7280;
-      margin-top: 14px;
-      line-height: 1.6;
-    }
-
-    .payment-note a {
-      color: #4A6FA5;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    .empty-message {
-      background: white;
-      padding: 24px;
-      border-radius: 14px;
-      text-align: center;
-      color: #5b6675;
-      border: 1px solid #e7edf5;
-      box-shadow: 0 6px 18px rgba(74, 111, 165, 0.08);
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      color: #6b7280;
-      margin-top: 40px;
-      border-top: 1px solid #dbe3ec;
-    }
-
-    @media (min-width: 850px) {
-      .group-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .templates {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .listing-row {
-        flex-direction: column;
-        align-items: stretch;
-        text-align: center;
-      }
-
-      .listing-left {
-        text-align: center;
-      }
-
-      .apply-btn {
-        text-align: center;
-      }
-    }
-  </style>
+</style>
 </head>
+
 <body>
 
-  <header>
-    <h1>Remote Life With Littles</h1>
-    <p>Helping parents and job seekers find legitimate remote jobs.</p>
-  </header>
+<header>
+<h1>Remote Life With Littles</h1>
+<p>Helping parents find legitimate remote jobs.</p>
+</header>
 
-  <div class="container">
+<div class="container">
 
-    <h2 class="section-title">Open Remote Jobs</h2>
-    <div id="jobGroups" class="group-grid"></div>
+<h2 class="section-title">Open Remote Jobs</h2>
 
-    <h2 class="section-title" style="margin-top:60px;">Resume Templates</h2>
+<div id="jobGroups" class="group-grid"></div>
 
-    <div class="templates">
-      <div class="template">
-        <h3>Customer Service Resume Template</h3>
-        <p style="color:#6b7280;">
-          Free resume template for customer service and support jobs.
-        </p>
-        <a href="customer-service-resume-template.pdf" class="download" download>
-          Download Free
-        </a>
-      </div>
+<h2 class="section-title">Resume Templates</h2>
 
-      <div class="template">
-        <h3>Remote Job Resume Template</h3>
-        <p style="color:#6b7280;">
-          Professional remote job resume template.
-        </p>
+<div class="templates">
 
-        <p style="font-weight:bold;">$9 Template</p>
+<div class="template">
 
-        <a href="https://paypal.me/YOURPAYPALNAME/9" class="buy" target="_blank" rel="noopener noreferrer">
-          Pay with PayPal
-        </a>
+<h3>Customer Service Resume Template</h3>
 
-        <br><br>
+<p>Free resume template for customer service jobs.</p>
 
-        <a href="https://cash.app/$YOURCASHTAG" class="buy" target="_blank" rel="noopener noreferrer">
-          Pay with Cash App
-        </a>
+<a href="customer-service-resume-template.pdf" class="download" download>
+Download Free
+</a>
 
-        <p class="payment-note">
-          After payment, email your receipt to
-          <a href="mailto:youremail@example.com">youremail@example.com</a>.<br>
-          Your resume template will be sent within 24 hours.
-        </p>
-      </div>
-    </div>
+</div>
 
-  </div>
+<div class="template">
 
-  <footer>
-    © 2026 Remote Life With Littles
-  </footer>
+<h3>Remote Job Resume Template</h3>
 
-  <script>
-    /* ============================================
-       ONLY UPDATE THE JOB LIST BELOW
-       ============================================ */
+<p>Professional resume template designed for remote jobs.</p>
 
-    const jobs = [
-      {
-        title: "Customer Support Representative",
-        company: "Stripe",
-        type: "Remote | Full Time",
-        postedDate: "2026-03-13",
-        status: "open",
-        link: "#"
-      },
-      {
-        title: "Customer Support Representative",
-        company: "Shopify",
-        type: "Remote | Full Time",
-        postedDate: "2026-03-13",
-        status: "open",
-        link: "#"
-      },
-      {
-        title: "Customer Support Representative",
-        company: "HubSpot",
-        type: "Remote | Full Time",
-        postedDate: "2026-03-12",
-        status: "open",
-        link: "#"
-      },
-      {
-        title: "Chat Support Agent",
-        company: "Support Co",
-        type: "Remote | Work From Home",
-        postedDate: "2026-03-13",
-        status: "open",
-        link: "#"
-      },
-      {
-        title: "Chat Support Agent",
-        company: "Help Desk Now",
-        type: "Remote | Full Time",
-        postedDate: "2026-03-11",
-        status: "open",
-        link: "#"
-      },
-      {
-        title: "Data Entry Specialist",
-        company: "Data Services",
-        type: "Remote | Entry Level",
-        postedDate: "2026-03-12",
-        status: "open",
-        link: "#"
-      },
-      {
-        title: "Account Manager",
-        company: "Growth Partners",
-        type: "Remote | Full Time",
-        postedDate: "2026-03-10",
-        status: "open",
-        link: "#"
-      },
-      {
-        title: "IT Support Specialist",
-        company: "Tech Help Desk",
-        type: "Remote | Full Time",
-        postedDate: "2026-03-09",
-        status: "closed",
-        link: "#"
-      }
-    ];
+<p><strong>$9 Template</strong></p>
 
-    /* ============================================
-       AUTOMATIC WEBSITE LOGIC
-       ============================================ */
+<a href="https://paypal.me/YOURPAYPALNAME/9" class="buy" target="_blank">
+Pay with PayPal
+</a>
 
-    const today = new Date().toISOString().split("T")[0];
-    const jobGroupsContainer = document.getElementById("jobGroups");
+<br><br>
 
-    function formatDate(dateString) {
-      const date = new Date(dateString + "T00:00:00");
-      return date.toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-      });
-    }
+<a href="https://cash.app/$YOURCASHTAG" class="buy" target="_blank">
+Pay with Cash App
+</a>
 
-    function groupJobsByTitle(jobArray) {
-      const grouped = {};
+<p class="payment-note">
+After payment email your receipt to
+<a href="mailto:youremail@example.com">youremail@example.com</a>
+and the template will be sent within 24 hours.
+</p>
 
-      jobArray.forEach(job => {
-        if (!grouped[job.title]) {
-          grouped[job.title] = [];
-        }
-        grouped[job.title].push(job);
-      });
+</div>
 
-      return grouped;
-    }
+</div>
 
-    function createListingRow(job, isToday) {
-      return `
-        <div class="listing-row">
-          <div class="listing-left">
-            <div>
-              ${isToday ? '<span class="tag tag-today">Today</span>' : '<span class="tag tag-open">Open</span>'}
-            </div>
-            <div class="company-name">${job.company}</div>
-            <div class="listing-meta">
-              ${job.type} • Posted: ${formatDate(job.postedDate)}
-            </div>
-          </div>
-          <a class="apply-btn" href="${job.link}" target="_blank" rel="noopener noreferrer">Apply Here</a>
-        </div>
-      `;
-    }
+</div>
 
-    function renderGroupedJobs() {
-      const openJobs = jobs.filter(job => job.status === "open");
+<footer>
+© 2026 Remote Life With Littles
+</footer>
 
-      if (openJobs.length === 0) {
-        jobGroupsContainer.innerHTML = `
-          <div class="empty-message">There are no open jobs listed right now.</div>
-        `;
-        return;
-      }
+<script>
 
-      const groupedJobs = groupJobsByTitle(openJobs);
+/* UPDATE JOBS HERE */
 
-      const groupCards = Object.entries(groupedJobs)
-        .sort((a, b) => {
-          const newestA = Math.max(...a[1].map(job => new Date(job.postedDate).getTime()));
-          const newestB = Math.max(...b[1].map(job => new Date(job.postedDate).getTime()));
-          return newestB - newestA;
-        })
-        .map(([title, listings], index) => {
-          const sortedListings = listings.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
-          const todayListings = sortedListings.filter(job => job.postedDate === today);
-          const olderListings = sortedListings.filter(job => job.postedDate !== today);
-          const typeText = sortedListings[0].type;
-          const olderId = `older-listings-${index}`;
+const jobs = [
 
-          return `
-            <div class="job-group">
-              <h3>${title}</h3>
-              <div class="group-type">${typeText}</div>
+{
+title:"Customer Support Representative",
+company:"Stripe",
+type:"Remote | Full Time",
+postedDate:"2026-03-13",
+status:"open",
+link:"#"
+},
 
-              ${todayListings.length > 0 ? `
-                <div class="mini-section-title">Companies Hiring Today</div>
-                <div class="listing-list">
-                  ${todayListings.map(job => createListingRow(job, true)).join("")}
-                </div>
-              ` : ""}
+{
+title:"Customer Support Representative",
+company:"Shopify",
+type:"Remote | Full Time",
+postedDate:"2026-03-13",
+status:"open",
+link:"#"
+},
 
-              ${olderListings.length > 0 ? `
-                <div class="mini-section-title">Older Open Listings</div>
-                <button class="older-toggle" onclick="toggleOlderListings('${olderId}', this)">
-                  ▼ Show Older Listings (${olderListings.length})
-                </button>
-                <div id="${olderId}" class="older-listings">
-                  <div class="listing-list">
-                    ${olderListings.map(job => createListingRow(job, false)).join("")}
-                  </div>
-                </div>
-              ` : ""}
-            </div>
-          `;
-        });
+{
+title:"Customer Support Representative",
+company:"HubSpot",
+type:"Remote | Full Time",
+postedDate:"2026-03-12",
+status:"open",
+link:"#"
+},
 
-      jobGroupsContainer.innerHTML = groupCards.join("");
-    }
+{
+title:"Chat Support Agent",
+company:"Support Co",
+type:"Remote | Work From Home",
+postedDate:"2026-03-13",
+status:"open",
+link:"#"
+}
 
-    function toggleOlderListings(id, button) {
-      const section = document.getElementById(id);
-      const isOpen = section.classList.contains("show");
+];
 
-      if (isOpen) {
-        section.classList.remove("show");
-        button.textContent = button.textContent.replace("▲ Hide Older Listings", "▼ Show Older Listings");
-      } else {
-        section.classList.add("show");
-        button.textContent = button.textContent.replace("▼ Show Older Listings", "▲ Hide Older Listings");
-      }
-    }
+const today = new Date().toISOString().split("T")[0];
 
-    renderGroupedJobs();
-  </script>
+const container=document.getElementById("jobGroups");
+
+function groupJobs(jobs){
+
+const grouped={};
+
+jobs.forEach(job=>{
+
+if(!grouped[job.title]){
+grouped[job.title]=[];
+}
+
+grouped[job.title].push(job);
+
+});
+
+return grouped;
+
+}
+
+function createRow(job,isToday){
+
+return `
+
+<div class="listing-row">
+
+<div>
+
+<div class="company-name">${job.company}</div>
+
+<div class="listing-meta">
+${job.type}
+</div>
+
+<span class="tag ${isToday?'tag-today':'tag-open'}">
+${isToday?'Today':'Open'}
+</span>
+
+</div>
+
+<a href="${job.link}" class="apply-btn" target="_blank">
+Apply
+</a>
+
+</div>
+
+`;
+
+}
+
+function render(){
+
+const openJobs=jobs.filter(j=>j.status==="open");
+
+const grouped=groupJobs(openJobs);
+
+let html="";
+
+Object.entries(grouped).forEach(([title,list],index)=>{
+
+const todayJobs=list.filter(j=>j.postedDate===today);
+const olderJobs=list.filter(j=>j.postedDate!==today);
+
+html+=`
+
+<div class="job-group">
+
+<h3>${title}</h3>
+
+<div class="group-type">${list[0].type}</div>
+
+<button class="older-toggle" onclick="toggle('today-${index}',this)">
+▼ Companies Hiring Today (${todayJobs.length})
+</button>
+
+<div id="today-${index}" class="older-listings">
+
+<div class="listing-list">
+
+${todayJobs.map(j=>createRow(j,true)).join("")}
+
+</div>
+
+</div>
+
+<button class="older-toggle" onclick="toggle('older-${index}',this)">
+▼ Older Open Listings (${olderJobs.length})
+</button>
+
+<div id="older-${index}" class="older-listings">
+
+<div class="listing-list">
+
+${olderJobs.map(j=>createRow(j,false)).join("")}
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+container.innerHTML=html;
+
+}
+
+function toggle(id,btn){
+
+const el=document.getElementById(id);
+
+if(el.classList.contains("show")){
+el.classList.remove("show");
+btn.innerHTML=btn.innerHTML.replace("▲","▼");
+}else{
+el.classList.add("show");
+btn.innerHTML=btn.innerHTML.replace("▼","▲");
+}
+
+}
+
+render();
+
+</script>
 
 </body>
 </html>
