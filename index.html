@@ -1,234 +1,467 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Remote Life With Littles</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<title>Remote Life With Littles</title>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #F5F7FA;
+      color: #2D2D2D;
+    }
 
-<style>
+    header {
+      background: #4A6FA5;
+      color: white;
+      text-align: center;
+      padding: 45px 20px;
+    }
 
-body{
-margin:0;
-font-family:Arial, sans-serif;
-background:#F5F7FA;
-color:#2D2D2D;
-}
+    header h1 {
+      margin: 0;
+      font-size: 34px;
+    }
 
-header{
-background:#4A6FA5;
-color:white;
-text-align:center;
-padding:45px 20px;
-}
+    header p {
+      margin: 12px 0 0;
+      font-size: 16px;
+      color: #eef3f9;
+    }
 
-header h1{
-margin:0;
-font-size:34px;
-}
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
 
-.container{
-max-width:1000px;
-margin:auto;
-padding:40px 20px;
-}
+    .section {
+      margin-bottom: 50px;
+    }
 
-.section-title{
-text-align:center;
-font-size:28px;
-margin-bottom:25px;
-}
+    .section-title {
+      text-align: center;
+      font-size: 30px;
+      margin: 0 0 10px;
+      color: #2D2D2D;
+    }
 
-.jobs{
-display:grid;
-grid-template-columns:1fr;
-gap:22px;
-}
+    .section-subtitle {
+      text-align: center;
+      color: #5b6675;
+      margin: 0 0 28px;
+      font-size: 15px;
+    }
 
-.job{
-background:white;
-padding:28px;
-border-radius:14px;
-box-shadow:0 6px 18px rgba(74,111,165,0.10);
-text-align:center;
-border:1px solid #e7edf5;
-}
+    .today-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
 
-.job h3{
-margin-top:0;
-font-size:26px;
-}
+    .today-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(74, 111, 165, 0.10);
+      border: 1px solid #e7edf5;
+      padding: 28px;
+    }
 
-.company{
-color:#4A6FA5;
-font-weight:bold;
-margin-bottom:8px;
-}
+    .today-badge {
+      display: inline-block;
+      background: #7FB069;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
 
-.job-meta{
-color:#5b6675;
-margin-bottom:10px;
-}
+    .today-card h3 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      text-align: center;
+      color: #2D2D2D;
+    }
 
-.posted{
-font-size:14px;
-color:#7b8795;
-margin-bottom:12px;
-}
+    .hiring-count {
+      text-align: center;
+      color: #4A6FA5;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
 
-.status{
-display:inline-block;
-background:#7FB069;
-color:white;
-padding:6px 14px;
-border-radius:20px;
-font-size:12px;
-margin-bottom:12px;
-}
+    .type-line {
+      text-align: center;
+      color: #5b6675;
+      margin-bottom: 18px;
+    }
 
-.apply{
-display:inline-block;
-padding:12px 24px;
-background:#4A6FA5;
-color:white;
-text-decoration:none;
-border-radius:8px;
-font-weight:bold;
-}
+    .company-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
 
-footer{
-text-align:center;
-margin-top:40px;
-padding:25px;
-color:#6b7280;
-}
+    .company-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: #f8fbff;
+      border: 1px solid #e2ebf5;
+      border-radius: 12px;
+    }
 
-@media (min-width:700px){
-.jobs{
-grid-template-columns:1fr 1fr;
-}
-}
+    .company-info {
+      text-align: left;
+    }
 
-</style>
+    .company-name {
+      font-weight: bold;
+      color: #2D2D2D;
+      margin-bottom: 4px;
+    }
+
+    .company-meta {
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    .apply-btn {
+      display: inline-block;
+      background: #4A6FA5;
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .apply-btn:hover {
+      background: #3f6294;
+    }
+
+    .open-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .open-row {
+      background: white;
+      border: 1px solid #e7edf5;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(74, 111, 165, 0.08);
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .open-left {
+      text-align: left;
+    }
+
+    .open-title {
+      font-size: 19px;
+      font-weight: bold;
+      color: #2D2D2D;
+      margin-bottom: 4px;
+    }
+
+    .open-company {
+      color: #4A6FA5;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .open-meta {
+      color: #6b7280;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .empty-message {
+      background: white;
+      padding: 24px;
+      border-radius: 14px;
+      text-align: center;
+      color: #5b6675;
+      border: 1px solid #e7edf5;
+      box-shadow: 0 6px 18px rgba(74, 111, 165, 0.08);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 25px;
+      color: #6b7280;
+      border-top: 1px solid #dbe3ec;
+      background: #F5F7FA;
+    }
+
+    @media (min-width: 800px) {
+      .today-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .company-row,
+      .open-row {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+      }
+
+      .company-info,
+      .open-left {
+        text-align: center;
+      }
+
+      .apply-btn {
+        text-align: center;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-<h1>Remote Life With Littles</h1>
-<p>Helping parents find legitimate remote jobs.</p>
-</header>
+  <header>
+    <h1>Remote Life With Littles</h1>
+    <p>Helping parents and job seekers find legitimate work-from-home jobs.</p>
+  </header>
 
-<div class="container">
+  <div class="container">
 
-<h2 class="section-title">Today's Remote Job Postings</h2>
-<div id="todayJobs" class="jobs"></div>
+    <section class="section">
+      <h2 class="section-title">Today’s Remote Job Postings</h2>
+      <p class="section-subtitle">Grouped by job title so the page stays clean.</p>
+      <div id="todayJobs" class="today-grid"></div>
+    </section>
 
-<h2 class="section-title" style="margin-top:50px;">All Open Jobs</h2>
-<div id="openJobs" class="jobs"></div>
+    <section class="section">
+      <h2 class="section-title">All Open Jobs</h2>
+      <p class="section-subtitle">Older jobs stay here until the position closes.</p>
+      <div id="openJobs" class="open-list"></div>
+    </section>
 
-</div>
+  </div>
 
-<footer>
-<p>© 2026 Remote Life With Littles</p>
-</footer>
+  <footer>
+    <p>© 2026 Remote Life With Littles</p>
+  </footer>
 
-<script>
+  <script>
+    /*
+      ============================================
+      ONLY UPDATE THE JOB LIST BELOW
+      ============================================
 
-/* ==========================
-   EASY JOB LIST (EDIT HERE)
-   ========================== */
+      To add a new job, copy one block and change:
+      - title
+      - company
+      - type
+      - postedDate
+      - status
+      - link
 
-const jobs = [
+      If multiple companies have the same title on the same day,
+      they will automatically group together in Today's Jobs.
 
-{
-title: "Customer Support Representative",
-company: "Example Company",
-type: "Remote | Full Time",
-postedDate: "2026-03-13",
-status: "open",
-link: "#"
-},
+      When a job closes, change:
+      status: "open"
+      to:
+      status: "closed"
+    */
 
-{
-title: "Chat Support Agent",
-company: "Support Co",
-type: "Remote | Work From Home",
-postedDate: "2026-03-13",
-status: "open",
-link: "#"
-},
+    const jobs = [
+      {
+        title: "Customer Support Representative",
+        company: "Stripe",
+        type: "Remote | Full Time",
+        postedDate: "2026-03-13",
+        status: "open",
+        link: "#"
+      },
+      {
+        title: "Customer Support Representative",
+        company: "Shopify",
+        type: "Remote | Full Time",
+        postedDate: "2026-03-13",
+        status: "open",
+        link: "#"
+      },
+      {
+        title: "Customer Support Representative",
+        company: "HubSpot",
+        type: "Remote | Full Time",
+        postedDate: "2026-03-13",
+        status: "open",
+        link: "#"
+      },
+      {
+        title: "Chat Support Agent",
+        company: "Support Co",
+        type: "Remote | Work From Home",
+        postedDate: "2026-03-13",
+        status: "open",
+        link: "#"
+      },
+      {
+        title: "Chat Support Agent",
+        company: "Help Desk Now",
+        type: "Remote | Full Time",
+        postedDate: "2026-03-13",
+        status: "open",
+        link: "#"
+      },
+      {
+        title: "Data Entry Specialist",
+        company: "Data Services Group",
+        type: "Remote | Entry Level",
+        postedDate: "2026-03-12",
+        status: "open",
+        link: "#"
+      },
+      {
+        title: "Account Manager",
+        company: "Growth Partners",
+        type: "Remote | Full Time",
+        postedDate: "2026-03-11",
+        status: "open",
+        link: "#"
+      },
+      {
+        title: "Customer Success Manager",
+        company: "Client First",
+        type: "Remote | Full Time",
+        postedDate: "2026-03-10",
+        status: "open",
+        link: "#"
+      },
+      {
+        title: "IT Support Specialist",
+        company: "Tech Help Desk",
+        type: "Remote | Full Time",
+        postedDate: "2026-03-09",
+        status: "closed",
+        link: "#"
+      }
+    ];
 
-{
-title: "Data Entry Specialist",
-company: "Data Services",
-type: "Remote | Entry Level",
-postedDate: "2026-03-12",
-status: "open",
-link: "#"
-},
+    const today = new Date().toISOString().split("T")[0];
 
-{
-title: "Account Manager",
-company: "Growth Partners",
-type: "Remote | Full Time",
-postedDate: "2026-03-11",
-status: "open",
-link: "#"
-},
+    const todayJobsContainer = document.getElementById("todayJobs");
+    const openJobsContainer = document.getElementById("openJobs");
 
-{
-title: "IT Support Specialist",
-company: "Tech Help Desk",
-type: "Remote | Full Time",
-postedDate: "2026-03-09",
-status: "closed",
-link: "#"
-}
+    const openJobs = jobs
+      .filter(job => job.status === "open")
+      .sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
 
-];
+    const todayJobs = openJobs.filter(job => job.postedDate === today);
 
+    function formatDate(dateString) {
+      const date = new Date(dateString + "T00:00:00");
+      return date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      });
+    }
 
-/* ==========================
-   AUTOMATIC WEBSITE LOGIC
-   ========================== */
+    function groupJobsByTitle(jobArray) {
+      const grouped = {};
 
-const today = new Date().toISOString().split("T")[0];
+      jobArray.forEach(job => {
+        if (!grouped[job.title]) {
+          grouped[job.title] = [];
+        }
+        grouped[job.title].push(job);
+      });
 
-const todayContainer = document.getElementById("todayJobs");
-const openContainer = document.getElementById("openJobs");
+      return grouped;
+    }
 
-function createJobCard(job){
+    function renderTodayJobs() {
+      if (todayJobs.length === 0) {
+        todayJobsContainer.innerHTML = `
+          <div class="empty-message">No new jobs have been posted today yet.</div>
+        `;
+        return;
+      }
 
-return `
-<div class="job">
+      const groupedTodayJobs = groupJobsByTitle(todayJobs);
 
-<div class="status">Open</div>
+      const cards = Object.entries(groupedTodayJobs).map(([title, listings]) => {
+        const typeText = listings[0].type;
+        const hiringText = listings.length === 1
+          ? "1 company hiring today"
+          : `${listings.length} companies hiring today`;
 
-<h3>${job.title}</h3>
+        const companyRows = listings.map(job => `
+          <div class="company-row">
+            <div class="company-info">
+              <div class="company-name">${job.company}</div>
+              <div class="company-meta">
+                ${job.type} • Posted: ${formatDate(job.postedDate)}
+              </div>
+            </div>
+            <a class="apply-btn" href="${job.link}" target="_blank" rel="noopener noreferrer">Apply Here</a>
+          </div>
+        `).join("");
 
-<div class="company">${job.company}</div>
+        return `
+          <div class="today-card">
+            <div class="today-badge">Open</div>
+            <h3>${title}</h3>
+            <div class="hiring-count">${hiringText}</div>
+            <div class="type-line">${typeText}</div>
+            <div class="company-list">${companyRows}</div>
+          </div>
+        `;
+      });
 
-<p class="job-meta">${job.type}</p>
+      todayJobsContainer.innerHTML = cards.join("");
+    }
 
-<p class="posted">Posted: ${job.postedDate}</p>
+    function renderOpenJobs() {
+      if (openJobs.length === 0) {
+        openJobsContainer.innerHTML = `
+          <div class="empty-message">There are no open jobs listed right now.</div>
+        `;
+        return;
+      }
 
-<a class="apply" href="${job.link}" target="_blank">Apply Here</a>
+      const rows = openJobs.map(job => `
+        <div class="open-row">
+          <div class="open-left">
+            <div class="open-title">${job.title}</div>
+            <div class="open-company">${job.company}</div>
+            <div class="open-meta">
+              ${job.type} • Posted: ${formatDate(job.postedDate)}
+            </div>
+          </div>
+          <a class="apply-btn" href="${job.link}" target="_blank" rel="noopener noreferrer">Apply Here</a>
+        </div>
+      `).join("");
 
-</div>
-`;
+      openJobsContainer.innerHTML = rows;
+    }
 
-}
-
-const openJobs = jobs.filter(job => job.status === "open");
-const todayJobs = openJobs.filter(job => job.postedDate === today);
-
-todayContainer.innerHTML = todayJobs.map(createJobCard).join("");
-
-openContainer.innerHTML = openJobs.map(createJobCard).join("");
-
-</script>
+    renderTodayJobs();
+    renderOpenJobs();
+  </script>
 
 </body>
 </html>
